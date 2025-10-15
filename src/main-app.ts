@@ -73,7 +73,6 @@ function MainApp() {
 
   const getConsolidatedIngredients = () => {
     const ingredientMap = new Map<string, number>();
-    console.log(shoppingList);
     shoppingList.forEach((ingredients) => {
       ingredients.forEach((ingredient) => {
         const compare = ingredient.trim().toLocaleLowerCase()
