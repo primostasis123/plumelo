@@ -23,13 +23,14 @@ export const cockTailStyles: CSSResultGroup = css`
   }
 
   .card {
-    border: 1px solid black;
-    border-radius: 4px;
     overflow: hidden;
-    background-color: white;
+    background-color: #fdfdfd;
     display: flex;
     flex-direction: row;
     align-items: stretch;
+    border-radius: 5px;
+    box-shadow: 2px 1px 2px rgba(0, 0, 0, 0.06);
+    border:1px solid #e5e7eb;   
   }
 
   .imageContainer {
@@ -86,7 +87,6 @@ export const cockTailStyles: CSSResultGroup = css`
     display: flex;
     align-items: end;
     padding: 24px;
-
   }
 
   .addButton {
