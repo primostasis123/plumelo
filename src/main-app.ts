@@ -10,10 +10,8 @@ function MainApp() {
   const [shoppingList, setShoppingList] = useState<Map<string, Set<string>>>(
     new Map()
   );
-  const [isSearching, setIsSearching] = useState(false);
 
   const handleSearch = async (query: string) => {
-    setIsSearching(true);
     setCocktails([]);
     setShoppingList(new Map());
     if (!query.trim()) {
@@ -51,8 +49,6 @@ function MainApp() {
         setCocktails([]);
       }
     } catch (error) {
-    } finally {
-      setIsSearching(false);
     }
   };
 
