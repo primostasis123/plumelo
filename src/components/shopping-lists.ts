@@ -11,7 +11,6 @@ type ShoppingListProps = {
 };
 
 function ShoppingLists(
-  this: HTMLElement,
   {
     shoppingList,
     cocktails,

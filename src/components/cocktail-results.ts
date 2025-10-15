@@ -9,10 +9,7 @@ type CocktailResultsProps = {
   shoppingList: Map<string, Set<string>>;
 };
 
-function CocktailResults(
-  this: HTMLElement,
-  { cocktails = [], shoppingList, onAddToList }: CocktailResultsProps
-) {
+function CocktailResults({ cocktails = [], shoppingList, onAddToList }: CocktailResultsProps) {
   if (!cocktails.length) {
     return html`
       <style>
