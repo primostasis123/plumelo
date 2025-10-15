@@ -6,8 +6,8 @@ import { sharedStyles } from "./styles/shared-styles";
 import type { Cocktail } from "./utils/types";
 
 function MainApp() {
-    const [cocktails, setCocktails] = useState<Cocktail[]>([]);
-    const [shoppingList, setShoppingList] = useState<Map<string, Set<string>>>(
+  const [cocktails, setCocktails] = useState<Cocktail[]>([]);
+  const [shoppingList, setShoppingList] = useState<Map<string, Set<string>>>(
     new Map()
   );
   const [isSearching, setIsSearching] = useState(false);
@@ -27,16 +27,14 @@ function MainApp() {
         )}`
       );
       const data = await response.json();
+      console.log(data);
       if (data.drinks) {
         const formattedCocktails = data.drinks.map((drink: any) => {
           const ingredients: string[] = [];
           for (let i = 1; i <= 15; i++) {
             const ingredient = drink[`strIngredient${i}`];
-            const measure = drink[`strMeasure${i}`];
             if (ingredient) {
-              ingredients.push(
-                measure ? `${measure.trim()} ${ingredient}` : ingredient
-              );
+              ingredients.push(ingredient);
             }
           }
           return {
@@ -47,6 +45,7 @@ function MainApp() {
             ingredients,
           };
         });
+
         setCocktails(formattedCocktails);
       } else {
         setCocktails([]);
@@ -67,28 +66,30 @@ function MainApp() {
 
   const removeFromShoppingList = (cocktailId: string) => {
     setShoppingList((prev) => {
-      const newList = new Map(prev)
-      newList.delete(cocktailId)
-      return newList
-    })
-  }
+      const newList = new Map(prev);
+      newList.delete(cocktailId);
+      return newList;
+    });
+  };
 
   const clearShoppingList = () => {
-    setShoppingList(new Map())
-  }
+    setShoppingList(new Map());
+  };
 
   const getConsolidatedIngredients = () => {
-    const ingredientMap = new Map<string, number>()
+    const ingredientMap = new Map<string, number>();
+    console.log(shoppingList);
     shoppingList.forEach((ingredients) => {
       ingredients.forEach((ingredient) => {
-        const baseIngredient = ingredient.split(" ").slice(-1)[0].toLowerCase()
-        ingredientMap.set(baseIngredient, (ingredientMap.get(baseIngredient) || 0) + 1)
+        const compare = ingredient.trim().toLocaleLowerCase()
+        ingredientMap.set(compare, (ingredientMap.get(compare) || 0) + 1)
       })
     })
 
-    return Array.from(ingredientMap.entries()).sort((a, b) => a[0].localeCompare(b[0]))
-  }
-
+    return Array.from(ingredientMap.entries()).sort((a, b) =>
+      a[0].localeCompare(b[0])
+    );
+  };
 
   return html`
     <style>

@@ -46,9 +46,9 @@ function ShoppingLists(
             <ul>
             ${consolidatedIngredients
               .map(
-                ([ingredient, count]) => `
+                ([ingredient]) => `
                 <li>
-                    <span>${ingredient}${count > 1 ? ` ×${count}` : ``}</span>
+                    <span>${ingredient}</span>
                 </li>
                 `
               )
@@ -120,14 +120,9 @@ function ShoppingLists(
                   <h3 class="sectionTitle">Consolidated Ingredients</h3>
                   <ul class="ingredientList">
                     ${consolidatedIngredients.map(
-                      ([ingredient, count]) => html`
+                      ([ingredient]) => html`
                         <li class="ingredientItem" key=${ingredient}>
                           <span class="ingredientName">${ingredient}</span>
-                          ${count > 1
-                            ? html`<span class="ingredientCount"
-                                >×${count}</span
-                              >`
-                            : html``}
                         </li>
                       `
                     )}

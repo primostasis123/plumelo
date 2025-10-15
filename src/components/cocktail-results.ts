@@ -43,18 +43,6 @@ function CocktailResults(
 
             <div class="cardContent">
               <h3 class="cardTitle">${cocktail.strDrink}</h3>
-
-              <div class="section">
-                <h4 class="sectionTitle">Ingredients</h4>
-                <ul class="ingredientList">
-                  ${cocktail.ingredients.map(
-                    (ingredient) => html`
-                      <li class="ingredientItem">${ingredient}</li>
-                    `
-                  )}
-                </ul>
-              </div>
-
               <div class="section">
                 <h4 class="sectionTitle">Instructions</h4>
                 <p class="instructions">${cocktail.strInstructions ?? ""}</p>
