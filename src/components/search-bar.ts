@@ -1,4 +1,3 @@
-// src/components/search-bar.ts
 import { component, html, useState } from '@pionjs/pion';
 import { searchBarStyles } from '../styles/search-bar-styles';
 

@@ -86,9 +86,7 @@ function MainApp() {
       })
     })
 
-    return Array.from(ingredientMap.entries()).sort((a, b) =>
-      a[0].localeCompare(b[0])
-    );
+    return [...ingredientMap.entries()];
   };
 
   return html`

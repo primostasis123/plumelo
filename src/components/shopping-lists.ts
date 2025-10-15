@@ -117,7 +117,7 @@ function ShoppingLists(
                 </div>
 
                 <div class="section">
-                  <h3 class="sectionTitle">Consolidated Ingredients</h3>
+                  <h3 class="sectionTitle">Ingredients</h3>
                   <ul class="ingredientList">
                     ${consolidatedIngredients.map(
                       ([ingredient]) => html`
