@@ -6,14 +6,16 @@ import { sharedStyles } from "./styles/shared-styles";
 import type { Cocktail } from "./utils/types";
 
 function MainApp() {
-  const [cocktails, setCocktails] = useState<Cocktail[]>([]);
-  const [shoppingList, setShoppingList] = useState<Map<string, Set<string>>>(
+    const [cocktails, setCocktails] = useState<Cocktail[]>([]);
+    const [shoppingList, setShoppingList] = useState<Map<string, Set<string>>>(
     new Map()
   );
   const [isSearching, setIsSearching] = useState(false);
 
   const handleSearch = async (query: string) => {
     setIsSearching(true);
+    setCocktails([]);
+    setShoppingList(new Map());
     if (!query.trim()) {
       setCocktails([]);
       return;
@@ -46,13 +48,12 @@ function MainApp() {
           };
         });
         setCocktails(formattedCocktails);
-        console.log(formattedCocktails);
       } else {
         setCocktails([]);
       }
     } catch (error) {
     } finally {
-      setIsSearching(true);
+      setIsSearching(false);
     }
   };
 
@@ -64,7 +65,7 @@ function MainApp() {
     });
   };
 
-  const removeFromShoppingList = (cocktailId: string, cocktailName: string) => {
+  const removeFromShoppingList = (cocktailId: string) => {
     setShoppingList((prev) => {
       const newList = new Map(prev)
       newList.delete(cocktailId)
