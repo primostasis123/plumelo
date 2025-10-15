@@ -1,4 +1,4 @@
-import { component, html, useState } from "@pionjs/pion";
+import { component, html } from "@pionjs/pion";
 import { cockTailStyles } from "../styles/cocktail-results-style";
 
 import type { Cocktail } from "../utils/types";

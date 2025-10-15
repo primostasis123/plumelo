@@ -1,6 +1,7 @@
 import { component, html, useState } from "@pionjs/pion";
 import "./components/search-bar";
 import "./components/cocktail-results";
+import "./components/shopping-lists";
 import { sharedStyles } from "./styles/shared-styles";
 import type { Cocktail } from "./utils/types";
 
@@ -62,6 +63,32 @@ function MainApp() {
       return newList;
     });
   };
+
+  const removeFromShoppingList = (cocktailId: string, cocktailName: string) => {
+    setShoppingList((prev) => {
+      const newList = new Map(prev)
+      newList.delete(cocktailId)
+      return newList
+    })
+  }
+
+  const clearShoppingList = () => {
+    setShoppingList(new Map())
+  }
+
+  const getConsolidatedIngredients = () => {
+    const ingredientMap = new Map<string, number>()
+    shoppingList.forEach((ingredients) => {
+      ingredients.forEach((ingredient) => {
+        const baseIngredient = ingredient.split(" ").slice(-1)[0].toLowerCase()
+        ingredientMap.set(baseIngredient, (ingredientMap.get(baseIngredient) || 0) + 1)
+      })
+    })
+
+    return Array.from(ingredientMap.entries()).sort((a, b) => a[0].localeCompare(b[0]))
+  }
+
+
   return html`
     <style>
       ${sharedStyles}
@@ -69,7 +96,7 @@ function MainApp() {
     <div class="container">
       <main class="main">
         <div class="layout">
-          <div class="content no-print">
+          <div class="content">
             <search-bar
               @search=${(e: CustomEvent<{ query: string }>) =>
                 handleSearch(e.detail.query)}
@@ -80,6 +107,16 @@ function MainApp() {
             .onAddToList=${addToShoppingList}>
             </cocktail-results>
           </div>
+          <aside class="sidebar">
+            <shopping-lists
+              .shoppingList=${shoppingList}
+              .cocktails=${cocktails}
+              .onRemove=${removeFromShoppingList}
+              .onClear=${clearShoppingList}
+              .consolidatedIngredients=${getConsolidatedIngredients()}
+            >
+            </shopping-lists>
+          </aside>
         </div>
       </main>
     </div>
