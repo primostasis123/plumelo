@@ -25,7 +25,6 @@ function MainApp() {
         )}`
       );
       const data = await response.json();
-      console.log(data);
       if (data.drinks) {
         const formattedCocktails = data.drinks.map((drink: any) => {
           const ingredients: string[] = [];
