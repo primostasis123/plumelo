@@ -1,6 +1,6 @@
-import { css, type CSSResultGroup } from "lit";
+import { css } from "lit";
 
-export const searchBarStyles: CSSResultGroup = css`
+export const searchBarStyles = css`
   .form {
     margin-bottom: 32px;
   }

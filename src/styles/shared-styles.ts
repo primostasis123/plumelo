@@ -1,6 +1,6 @@
-import { css, type CSSResultGroup } from 'lit';
+import { css } from 'lit';
 
-export const sharedStyles: CSSResultGroup = css`
+export const sharedStyles = css`
 .container {
   min-height: 100vh;
   background-color: white;

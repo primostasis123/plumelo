@@ -1,6 +1,6 @@
-import { css, type CSSResultGroup } from "lit";
+import { css } from "lit";
 
-export const shoppingListStyles: CSSResultGroup = css`
+export const shoppingListStyles = css`
   .card {
     border-radius: 4px;
     background-color: white;

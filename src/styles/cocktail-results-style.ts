@@ -1,6 +1,6 @@
-import { css, type CSSResultGroup } from "lit";
+import { css } from "lit";
 
-export const cockTailStyles: CSSResultGroup = css`
+export const cockTailStyles = css`
   .emptyState {
     text-align: center;
     padding: 48px 0;

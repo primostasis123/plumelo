@@ -79,7 +79,6 @@ function MainApp() {
         ingredientMap.set(compare, (ingredientMap.get(compare) || 0) + 1)
       })
     })
-
     return [...ingredientMap.entries()];
   };
 
